@@ -33,6 +33,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		return entreprise.getId();
 	}
 
+
 	public int ajouterDepartement(Departement dep) {
 		deptRepoistory.save(dep);
 		return dep.getId();
