@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,6 @@ import tn.esprit.spring.services.IEmployeService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-
 public class EmployeServiceImplTest {
 	@Autowired
 	IEmployeService es;

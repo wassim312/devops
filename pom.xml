@@ -9,11 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>tn.esprit.spring</groupId>
-	<artifactId>Timesheet-spring-boot-core-data-jpa-mvc-REST-1</artifactId>
+	<artifactId>timesheet</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Timesheet-spring-boot-core-data-jpa-mvc-REST-1</name>
-	<description>Timesheet-spring-boot-core-data-jpa-mvc-REST-1</description>
-
+	<name>timesheet</name>
+	<description>timesheet</description>
+  
 	<properties>
 		<java.version>1.8</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
@@ -51,11 +51,7 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+		
 	</dependencies>
 
 
@@ -73,6 +69,33 @@
         </configuration>  
          </plugin>  
 		</plugins>
+		 <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.4.0.905</version>
+            </plugin>
+            
+        </plugins>
+    </pluginManagement>
+    
+<finalName>timesheet</finalName>    
 	</build>
+	
+ 
+<distributionManagement>
+     	<snapshotRepository>
+     		<id>deploymentRepo</id>
+     		<url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+     	</snapshotRepository>
+     	<repository>
+     		<id>deploymentRepo</id>
+     		<url>http://localhost:8081/nexus/content/repositories/releases</url>
+     	</repository>
+     </distributionManagement>
+
+ 
+  
 
 </project>
