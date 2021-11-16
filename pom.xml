@@ -76,8 +76,29 @@
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.4.0.905</version>
             </plugin>
-            
+       <plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.3</version>
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<repository>herom/timesheetdocker</repository>
+					<username>herom</username>
+					<password>carealportotun11</password>
+					<tag>${project.version}</tag>
+				</configuration>
+			</plugin>
+
         </plugins>
+        
     </pluginManagement>
     
 <finalName>timesheet</finalName>    
