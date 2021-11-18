@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.services.IEmployeService;
@@ -42,6 +43,14 @@ public class EmployeServiceImplTest {
 	public void testGetAllEmployeNamesJPQL() {
 		es.getAllEmployeNamesJPQL(); 
 	}
-
+	@Test
+	public void testMettreAjourEmailByEmployeId() {
+		List <Employe> employees = es.getAllEmployes();
+		int employeId = 0;
+		for (Employe emp : employees) {
+			employeId = emp.getId(); 
+		}
+		es.mettreAjourEmailByEmployeId("change@mail.com", employeId);
+	}
 
 }
