@@ -9,19 +9,17 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>tn.esprit.spring</groupId>
-	<artifactId>Timesheet-spring-boot-core-data-jpa-mvc-REST-1</artifactId>
+	<artifactId>timesheet</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
-	<name>Timesheet-spring-boot-core-data-jpa-mvc-REST-1</name>
-	<description>Timesheet-spring-boot-core-data-jpa-mvc-REST-1</description>
-
+	<name>timesheet</name>
+	<description>timesheet</description>
+  
 	<properties>
 		<java.version>1.8</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
 
 	<dependencies>
-		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -38,39 +36,24 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-<dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-api</artifactId>
-    <version>1.7.30</version>
-</dependency>
-		
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
-<dependency>
-    <groupId>org.modelmapper</groupId>
-    <artifactId>modelmapper</artifactId>
-    <version>2.3.8</version>
-</dependency>
 		
 	</dependencies>
+
 
 	<build>
 		<plugins>
@@ -78,8 +61,62 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>  
+        <groupId>org.apache.maven.plugins</groupId>  
+        <artifactId>maven-surefire-plugin</artifactId>  
+        <configuration>  
+          <skipTests>false</skipTests>  
+        </configuration>  
+         </plugin>  
 		</plugins>
+		 <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.3</version>
+            </plugin>
+       <plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.3</version>
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<repository>herom/timesheetdocker</repository>
+					<username>herom</username>
+					<password>carealportotun11</password>
+					<tag>${project.version}</tag>
+				</configuration>
+			</plugin>
+
+        </plugins>
+        
+    </pluginManagement>
+    
+<finalName>timesheet</finalName>    
 	</build>
+	
+ 
+<distributionManagement>
+     	<snapshotRepository>
+     		<id>deploymentRepo</id>
+     		<url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+     	</snapshotRepository>
+     	<repository>
+     		<id>deploymentRepo</id>
+     		<url>http://localhost:8081/nexus/content/repositories/releases</url>
+     	</repository>
+     </distributionManagement>
+
+ 
+  
 
 </project>
-	
